@@ -46,6 +46,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
+colorscheme onedark
+
 " Powerline fonts
 let g:airline_powerline_fonts = 1
 set guifont=Meslo\ LG\ M\ DZ\ for\ Powerline:h14

@@ -1,7 +1,7 @@
 set background=dark
 
 " colorscheme codeschool
-colorscheme onedark
+" colorscheme onedark
 
 set lines=999 columns=9999
 let mapleader=","
