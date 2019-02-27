@@ -69,8 +69,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-eval "$(rbenv init -)"
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -105,7 +103,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # System
 alias o='open'
 alias vim="mvim"
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig="vi ~/.zshrc"
+alias vimconfig="vi ~/.vimrc"
 
 # Git
 alias git='hub'
@@ -118,20 +117,37 @@ alias gcob='git checkout -b'
 # rails
 alias beer='bundle exec rspec'
 alias be='bundle exec'
+alias ber='bundle exec rails'
+alias beh='bundle exec hanami'
 alias foredev='foreman s -f Procfile.dev'
+alias rake='noglob bundle exec rake'
+
+# Py
+alias py=python3
+alias pip=pip3
 
 # Directories
 alias bluethumbssh="cx ssh -s bluethumb-puma -e production"
 
 # Export
 export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
+export PATH="/Users/chong/.rbenv/hims:$PATH"
 export PATH="$PATH:/Users/chong/bin"
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 export PATH="/usr/local/opt/node@8/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/Users/chong/Library/Python/3.7/bin:$PATH"
 # Export for Fzf Vim
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+# Go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:$(go env GOPATH)/bin
+
+eval "$(rbenv init -)"
 
 # Terminal Note
 # Create a note file called notes.md
 alias ne='vi ~/notes.md'
 alias nv='cat ~/notes.md'
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

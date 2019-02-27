@@ -3,7 +3,7 @@ set background=dark
 " colorscheme codeschool
 " colorscheme onedark
 
-set lines=999 columns=9999
+" set lines=999 columns=9999
 let mapleader=","
 
 " set guioptions=r
@@ -16,6 +16,14 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=T
 set scroll=30
+
+" To enable the saving and restoring of screen positions.
+let g:screen_size_restore_pos = 1
+
+" To save and restore screen for each Vim instance.
+" This is useful if you routinely run more than one Vim instance.
+" For all Vim to use the same settings, change this to 0.
+let g:screen_size_by_vim_instance = 1
 
 set wildignore+=*/node_modules/*,*.so,*.swp,*.zip,*/bower_components/*
 

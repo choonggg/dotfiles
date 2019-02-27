@@ -6,6 +6,8 @@
 	<true/>
 	<key>AboutToPasteTabsWithCancel_selection</key>
 	<integer>2</integer>
+	<key>AlternateMouseScroll</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -66,12 +68,16 @@
 	<string>-1308 129 630 374 -1920 -280 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>-1270 363 620 392 -1920 -135 1920 1057 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>-1651 -114 606 469 -1920 -240 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>-1295 101 796 473 -1920 -280 1920 1057 </string>
+	<string>269 219 796 473 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>317 138 962 626 0 0 1280 777 </string>
+	<string>0 183 930 594 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>180 51 810 603 0 0 1280 777 </string>
+	<string>-1502 -96 825 571 -1920 -240 1920 1057 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>-1673 -133 825 571 -1920 -240 1920 1057 </string>
 	<key>NeverWarnAboutOverrides</key>
 	<true/>
 	<key>NeverWarnAboutOverrides_selection</key>
@@ -855,6 +861,10 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>0B6CD736-2F5E-4B04-853E-01D850CA4E62</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
@@ -903,9 +913,9 @@
 	<key>Print In Black And White</key>
 	<true/>
 	<key>SUAutomaticallyUpdate</key>
-	<true/>
+	<false/>
 	<key>SUEnableAutomaticChecks</key>
-	<true/>
+	<false/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
@@ -913,8 +923,10 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-06-20T08:52:36Z</date>
+	<date>2018-09-13T08:27:11Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>ShowFullScreenTabBar</key>
 	<false/>
 	<key>TabStyle</key>
 	<integer>1</integer>
@@ -923,7 +935,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.6</string>
+	<string>3.1.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
