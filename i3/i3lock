@@ -1,0 +1,4 @@
+#!/bin/bash
+maim /tmp/lockscreen.png
+convert /tmp/lockscreen.png -blur 0x10 /tmp/lockscreen.png
+i3lock -i /tmp/lockscreen.png
