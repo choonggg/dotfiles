@@ -2,35 +2,39 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/chong/.oh-my-zsh
+export ZSH="/home/eli/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
-# ZSH_THEME="honukai"
 ZSH_THEME="candy"
 
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -51,46 +55,52 @@ ZSH_THEME="candy"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  asdf
   git
-  rails
-  autojump
+  gitfast
+  last-working-dir
 )
 
 source $ZSH/oh-my-zsh.sh
+
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
+export BROWSER=/usr/bin/firefox
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
-fi
-
-EDITOR='vi'
+#   export EDITOR='vim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -98,13 +108,17 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# System
-alias o='open'
-alias vim="mvim"
+alias sudo="sudo "
+alias vi="nvim"
+alias vim="nvim"
+alias vimconfig="vi ~/.config/nvim/init.vim"
 alias zshconfig="vi ~/.zshrc"
-alias vimconfig="vi ~/.vimrc"
+alias i3config="vi ~/.config/i3/config"
+alias gitignore="vi ~/.config/git/ignore"
+alias xmouseconfig="sudo vi /etc/X11/xorg.conf.d/90-touchpad.conf"
+alias ohmyzsh="vi ~/.oh-my-zsh"
+alias settings="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+alias xclip="xclip -selection c"
 
 # Git
 alias git='hub'
@@ -112,42 +126,71 @@ alias gp='git push -u'
 alias gpf='git push --force-with-lease'
 alias gpu='git pull --rebase'
 alias gpup='git pull --rebase && git push -u'
+alias grhh='git reset --hard'
 alias gcob='git checkout -b'
 
-# rails
+# Rails
 alias beer='bundle exec rspec'
 alias be='bundle exec'
-alias ber='bundle exec rails'
-alias beh='bundle exec hanami'
+alias bwp='bin/webpack-dev-server'
 alias foredev='foreman s -f Procfile.dev'
-alias rake='noglob bundle exec rake'
+alias dcdev='docker compose -f docker-compose.dev.yml -d'
+alias pdev='foreman s -f Procfile.dev'
+alias rubonow='rubocop $(git diff --name-only)'
+alias rdm='rails db:migrate'
+alias rdr='rails db:rollback'
+alias rr='rails routes'
+alias rs='bundle exec rails server -b 0.0.0.0'
+alias rc='bundle exec rails console'
+
+# Vim
+alias vims='ls | grep .vim'
+
+# System
+alias sc='systemctl'
+alias ss='systemctl start'
+alias st='systemctl stop'
+
+# Docker
+alias dc='docker-compose'
+alias kx='kubectx'
+alias kc='kubectl'
+alias hl='helm'
+
+alias o='nautilus'
+
+alias wl='nmcli dev wifi'
+alias wc='nmcli dev wifi connect'
 
 # Py
 alias py=python3
+alias python=python3
 alias pip=pip3
 
-# Directories
-alias bluethumbssh="cx ssh -s bluethumb-puma -e production"
+# Exports
+export set LD_LIBRARY_PATH=/usr/lib64 needle < /dev/null
 
-# Export
-export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
-export PATH="/Users/chong/.rbenv/hims:$PATH"
-export PATH="$PATH:/Users/chong/bin"
-export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
-export PATH="/usr/local/opt/node@8/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/npm/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+export PATH="/snap/bin:$PATH"
+export PATH="/var/lib/snapd/snap/bin:$PATH"
+export PATH="/usr/share/Modules/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
-export PATH="/Users/chong/Library/Python/3.7/bin:$PATH"
-# Export for Fzf Vim
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-# Go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export PATH=$PATH:$(go env GOPATH)/bin
+export PATH="/usr/local/lib/nodejs/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+
+# Golang
+export GOROOT="/usr/local/go"
+export GOPATH="$HOME/Workspace/go"
+export PATH="$GOPATH/bin/:$GOROOT/bin:$PATH"
+
+# precmd() { eval "pwd > /tmp/whereami" }
 
 eval "$(rbenv init -)"
 
-# Terminal Note
-# Create a note file called notes.md
-alias ne='vi ~/notes.md'
-alias nv='cat ~/notes.md'
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
