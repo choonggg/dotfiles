@@ -1,0 +1,7 @@
+*.vim
+.pgsync.yml
+tags
+tags.lock
+tags.temp
+.solargraph.yml
+notes.md
